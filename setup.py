@@ -55,9 +55,9 @@ def create_database():
 
         # Sample users
         sample_users = [
-            ['soudea.forbes@mga.edu', 'Soudea', 'student', None, "123 Lane Lane, Dublin GA 31021"],
-            ['alekya.thalakoti@mga.edu', 'Alekya', 'student', None, None],
-            ['joobum.kim@mga.edu', 'Dr. Kim', 'faculty', 'ITEC', "MGA Campus, Macon, GA, 31201"],
+            ['bisky.forbes@mga.edu', 'Bisky', 'student', None, "123 Lane Lane, Dublin GA 31021"],
+            ['random.student@mga.edu', 'Student', 'student', None, None],
+            ['dr.faculty@mga.edu', 'Dr. Faculty', 'faculty', 'ITEC', "MGA Campus, Macon, GA, 31201"],
             ['aloethecat@bookstore.com', 'Aloe', 'staff', None, None]
         ]
         for sample in sample_users:

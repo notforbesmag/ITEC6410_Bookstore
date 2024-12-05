@@ -9,9 +9,9 @@ In your browser, go to http://127.0.0.1:5000 to interact with the interface.
 
 
 Certain options are limited based on the user’s role (student, staff, faculty). To test those, login using one of the following email addresses and then navigate to a book page or http://127.0.0.1:5000/profile. 
-soudea.forbes@mga.edu - Student
-alekya.thalakoti@mga.edu - Student
-joobum.kim@mga.edu - Faculty
+bisky.forbes@mga.edu - Student
+random.student@mga.edu - Student
+dr.faculty@mga.edu - Faculty
 Removing a book from a Course List
 Creating a Course List
 Adding a Book to a Course List
