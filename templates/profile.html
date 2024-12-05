@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mb-4">Profile</h1>
+
+    <form method="POST" class="bg-light p-4 rounded shadow-sm">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" name="name" value="{{ user.name }}" required class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="address" class="form-label">Delivery Address:</label>
+            <input type="text" name="address" value="{{ user.address }}" required class="form-control">
+        </div>
+
+        {% if role == 'faculty' %}
+        <div class="mb-3">
+            <label for="department" class="form-label">Department:</label>
+            <input type="text" name="department" value="{{ user.department }}" class="form-control">
+        </div>
+        {% endif %}
+        
+        <button type="submit" class="btn btn-primary w-100">Update Profile</button>
+    </form>
+
+    <div class="mt-4 text-center">
+        {% if role == 'faculty' %}
+        <a href="{{ url_for('manage_courses') }}" class="btn btn-warning me-2">Manage Course Lists</a>
+        {% endif %}
+        <a href="{{ url_for('my_orders') }}" class="btn btn-info">My Orders</a>
+    </div>
+</div>
+{% endblock %}

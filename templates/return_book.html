@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Return Book{% endblock %}
+
+{% block content %}
+<h1>Return Book</h1>
+<p>Are you sure you want to return the book: <strong>{{ order_item.title }}</strong>?</p>
+
+<form method="POST">
+    <button type="submit" class="btn btn-danger">Request Return</button>
+</form>
+
+<p>If the return window has expired, you will not be able to process the return.</p>
+
+{% endblock %}

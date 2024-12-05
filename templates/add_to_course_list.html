@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Add Book to Course List{% endblock %}
+
+{% block content %}
+<h1>Add Book to Course List</h1>
+<form method="POST" action="{{ url_for('add_to_course_list', book_id=book_id) }}">
+    <div class="mb-3">
+        <label for="course_list_id" class="form-label">Select Course List</label>
+        <select class="form-control" id="course_list_id" name="course_list_id" required>
+            {% for course in course_lists %}
+                <option value="{{ course.id }}">{{ course.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add to Course List</button>
+</form>
+{% endblock %}

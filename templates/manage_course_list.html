@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Manage Course List{% endblock %}
+
+{% block content %}
+<h1>Course List for {{ course_list.name }} - {{ course_list.course_title }}</h1>
+<ul>
+    {% for book in books %}
+        <li>{{ book.title }} by {{ book.author }}
+            <form method="POST" action="{{ url_for('remove_from_course_list', course_list_id=course_list.id, book_id=book.id) }}" style="display:inline">
+                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

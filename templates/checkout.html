@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<h1>Checkout</h1>
+{% if session['user_email'] %}
+    <h2>Welcome, {{ session['user_name'] }}</h2>
+{% else %}
+    <h2>Checkout as Guest</h2>
+{% endif %}
+
+<h3>Order Summary:</h3>
+<ul>
+    {% for book in books %}
+        <li>{{ book.title }} by {{ book.author }} - ${{ "%.2f" | format(book.price) }}</li>
+    {% endfor %}
+</ul>
+<p><strong>Total Cost: ${{ "%.2f" | format(total_cost) }}</strong></p>
+
+<form method="POST">
+    <h4>Delivery Method</h4>
+    {% for method in delivery_methods %}
+        <label>
+            <input type="radio" name="delivery_method" value="{{ method }}" required>
+            {{ method }}
+        </label><br>
+    {% endfor %}
+
+    <h4>Payment Method</h4>
+    <label>
+        <input type="radio" name="payment_method" value="Credit Card" required> Credit Card
+    </label><br>
+    <label>
+        <input type="radio" name="payment_method" value="PayPal" required> PayPal
+    </label><br>
+    <label>
+        <input type="radio" name="payment_method" value="University Account" required> University Account
+    </label><br>
+
+    <button type="submit">Confirm Order</button>
+</form>
+{% endblock %}

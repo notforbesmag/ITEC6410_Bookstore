@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+<img class="book-cover" src="{{ url_for('static', filename='images/' + book.cover_url) }}" alt="{{ book.title }} cover"/>
+<h1>{{ book.title }}</h1>
+<p><strong>Author:</strong> {{ book.author }}</p>
+<p><strong>ISBN:</strong> {{ book.isbn }}</p>
+<p><strong>Price:</strong> ${{ "%.2f" | format(book.price) }}</p>
+
+{% set course_lists = book.get_course_lists() %}
+{% if course_lists %}
+    <h3>Courses: </h3>
+    <div class="course-lists">
+        {% for course in course_lists %}
+            <span class="badge badge-primary mr-2">
+                <strong>{{ course.name }}</strong>: {{ course.course_title }} (Prof: {{ course.professor_name }})
+            </span>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>This book is not currently part of any course lists.</p>
+{% endif %}
+
+<div>
+    <a href="{{ url_for('add_to_cart', book_id=book.id) }}" class="btn btn-success">Add to Cart</a>
+
+    {% if role == 'staff' %}
+        <a href="{{ url_for('edit_book', book_id=book.id) }}" class="btn btn-warning">Edit Book</a>
+        <a href="{{ url_for('delete_book', book_id=book.id) }}" class="btn btn-danger">Delete Book</a>
+    {% endif %}
+    {% if role == 'faculty' %}
+        <a href="{{ url_for('add_to_course_list', book_id=book.id) }}" class="btn btn-warning">Add to Course List</a>
+    {% endif %}
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Catalog</a>
+</div>
+
+{% endblock %}

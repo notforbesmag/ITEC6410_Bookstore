@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Courses{% endblock %}
+
+{% block content %}
+<h1>Manage Courses</h1>
+<ul>
+    {% for course in course_lists %}
+    <li>
+        <a href="{{url_for('manage_course_list', course_list_id=course.id) }}">{{ course.name }} ({{ course.course_title }})</a>
+    </li>
+    {% endfor %}
+    <li>
+        <a href="{{ url_for('create_course_list') }}" class="btn btn-primary">+ Create a Course List</a>
+    </li>
+</ul>
+{% endblock %}

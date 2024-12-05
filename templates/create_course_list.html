@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Create Course List{% endblock %}
+
+{% block content %}
+<h1>Create a New Course List</h1>
+<form method="POST">
+    <div class="form-group">
+        <label for="course_title">Course Title</label>
+        <input type="text" id="course_title" name="course_title" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="department">Department</label>
+        <input type="text" id="department" name="department" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="course_number">Course Number</label>
+        <input type="text" id="course_number" name="course_number" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Course List</button>
+</form>
+{% endblock %}

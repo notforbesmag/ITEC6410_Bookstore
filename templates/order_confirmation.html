@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Order Confirmation{% endblock %}
+
+{% block content %}
+<h1>Order Confirmation</h1>
+<p>Thank you for your order, {{ order.user_email }}!</p>
+<p>Order ID: {{ order.order_id }}</p>
+<p>Total Cost: ${{ "%.2f" | format(total_cost) }}</p>
+
+<h3>Order Items:</h3>
+<ul>
+    {% for book in books %}
+        <li>{{ book.title }} by {{ book.author }} - ${{ "%.2f" | format(book.price) }} (x{{ book.quantity }})</li>
+    {% endfor %}
+</ul>
+{% endblock %}

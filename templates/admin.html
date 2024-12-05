@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+<h1>Admin Panel</h1>
+<h2>Manage Books</h2>
+
+<form method="POST" action="{{ url_for('add_book') }}">
+    <h3>Add Book</h3>
+    <label>Title:</label><input type="text" name="title"><br>
+    <label>Author:</label><input type="text" name="author"><br>
+    <label>Price:</label><input type="text" name="price"><br>
+    <button type="submit">Add Book</button>
+</form>
+
+<h3>Delete Books</h3>
+<ul>
+    {% for book in books %}
+        <li>{{ book.title }} <a href="{{ url_for('delete_book', book_id=book.id) }}">Delete</a></li>
+    {% endfor %}
+</ul>
